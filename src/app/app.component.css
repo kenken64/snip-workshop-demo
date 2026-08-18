@@ -1,25 +1,33 @@
 :host {
+  position: relative;
+  z-index: 1;
   display: block;
   min-height: 100vh;
 }
 
 .page-shell {
-  width: min(100% - 2rem, 920px);
+  position: relative;
+  z-index: 1;
+  width: min(100% - 2rem, 960px);
   margin: 0 auto;
-  padding: 4rem 0 5rem;
+  padding: 5.5rem 0 6rem;
 }
 
 .hero {
-  padding: 4rem 1rem 3.5rem;
+  padding: 4rem 1rem 4.5rem;
   text-align: center;
 }
 
 .eyebrow {
-  margin: 0 0 1rem;
-  color: #6e6b78;
+  margin: 0 0 1.1rem;
+  color: var(--snip-faint);
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
+}
+
+.hero .eyebrow {
+  color: var(--snip-coral);
 }
 
 h1,
@@ -29,143 +37,162 @@ p {
 }
 
 h1 {
-  max-width: 680px;
+  max-width: 780px;
   margin: 0 auto;
-  color: #202027;
-  font-size: clamp(2.5rem, 8vw, 5.5rem);
-  font-weight: 650;
-  letter-spacing: -0.07em;
-  line-height: 0.95;
+  color: var(--snip-text);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 700;
+  letter-spacing: -0.075em;
+  line-height: 0.92;
 }
 
 .intro {
-  margin: 1.5rem auto 2.5rem;
-  color: #77737f;
-  font-size: 1.05rem;
+  max-width: 440px;
+  margin: 1.75rem auto 2.75rem;
+  color: var(--snip-muted);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .shorten-form {
   display: flex;
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto;
-  padding: 0.4rem;
-  background: #fff;
-  border: 1px solid #e3e0e8;
-  border-radius: 1rem;
-  box-shadow: 0 1rem 3rem rgb(40 31 60 / 8%);
+  padding: 0.45rem;
+  background: rgb(21 19 24 / 82%);
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 999px;
+  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 35%), 0 0 2.5rem rgb(255 93 143 / 9%);
+  backdrop-filter: blur(18px);
+}
+
+.shorten-form:focus-within {
+  border-color: rgb(255 146 120 / 58%);
+  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 35%), 0 0 2.5rem rgb(255 93 143 / 17%);
 }
 
 .shorten-form input {
   min-width: 0;
   flex: 1;
-  padding: 0.9rem 1rem;
-  color: #202027;
+  padding: 1rem 1.25rem;
+  color: var(--snip-text);
   background: transparent;
   border: 0;
   outline: 0;
-  font: inherit;
 }
 
 .shorten-form input::placeholder {
-  color: #a09ba8;
+  color: var(--snip-faint);
 }
 
 button {
-  padding: 0.9rem 1.3rem;
-  color: #fff;
-  background: #25222d;
+  padding: 1rem 1.45rem;
+  color: #1b1015;
+  background: var(--snip-accent);
   border: 0;
-  border-radius: 0.7rem;
+  border-radius: 999px;
   cursor: pointer;
-  font: inherit;
-  font-weight: 650;
+  font-weight: 750;
   white-space: nowrap;
+  transition: transform 160ms ease, filter 160ms ease;
 }
 
 button:hover:not(:disabled) {
-  background: #50446e;
+  filter: brightness(1.1) saturate(1.08);
+  transform: translateY(-1px);
 }
 
 button:disabled,
 input:disabled {
   cursor: wait;
-  opacity: 0.65;
+  opacity: 0.6;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--snip-coral);
+  outline-offset: 3px;
 }
 
 .notice {
-  width: min(100%, 680px);
+  width: min(100%, 720px);
   margin: 1rem auto 0;
-  padding: 0.85rem 1rem;
-  border-radius: 0.7rem;
+  padding: 1rem 1.15rem;
+  color: var(--snip-muted);
+  background: rgb(21 19 24 / 82%);
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 1rem;
   font-size: 0.9rem;
   text-align: left;
+  backdrop-filter: blur(14px);
 }
 
 .notice a {
   display: block;
-  margin-top: 0.25rem;
+  margin-top: 0.35rem;
   overflow-wrap: anywhere;
+  color: var(--snip-text);
   font-weight: 650;
 }
 
 .error {
-  color: #9c3f4a;
-  background: #fff0f1;
-  border: 1px solid #f2ced2;
+  color: #ffb3b1;
+  background: rgb(104 35 42 / 25%);
+  border-color: rgb(255 112 124 / 36%);
 }
 
 .success {
-  color: #2e624d;
-  background: #edf9f2;
-  border: 1px solid #c9e9d7;
-}
-
-.success a {
-  color: inherit;
+  color: #b8e7c8;
+  background: rgb(34 92 61 / 23%);
+  border-color: rgb(108 220 151 / 32%);
 }
 
 .links-panel {
   overflow: hidden;
-  background: rgb(255 255 255 / 78%);
-  border: 1px solid #e5e1e9;
-  border-radius: 1.25rem;
-  box-shadow: 0 1rem 3rem rgb(40 31 60 / 5%);
+  background: rgb(21 19 24 / 88%);
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 1.5rem;
+  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 25%);
+  backdrop-filter: blur(18px);
 }
 
 .panel-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 1.5rem 1.2rem;
+  padding: 1.7rem 1.7rem 1.35rem;
 }
 
 .panel-header .eyebrow {
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.5rem;
 }
 
 h2 {
   margin-bottom: 0;
-  color: #292631;
-  font-size: 1.3rem;
-  letter-spacing: -0.03em;
+  color: var(--snip-text);
+  font-size: 1.35rem;
+  font-weight: 650;
+  letter-spacing: -0.035em;
 }
 
 .count {
   display: grid;
-  width: 2rem;
-  height: 2rem;
+  width: 2.25rem;
+  height: 2.25rem;
   place-items: center;
-  color: #625b74;
-  background: #f0edf5;
-  border-radius: 50%;
+  color: #ffc0ae;
+  background: rgb(255 146 120 / 12%);
+  border: 1px solid rgb(255 146 120 / 22%);
+  border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 700;
 }
 
 .empty-state {
   margin: 0;
-  padding: 2.5rem 1.5rem;
-  color: #898490;
+  padding: 3.5rem 1.5rem;
+  color: var(--snip-faint);
   text-align: center;
 }
 
@@ -181,36 +208,44 @@ table {
 
 th,
 td {
-  padding: 1rem 1.5rem;
-  border-top: 1px solid #eeeaf1;
+  padding: 1.15rem 1.7rem;
+  border-top: 1px solid rgb(255 255 255 / 7%);
   font-size: 0.9rem;
   vertical-align: middle;
 }
 
 th {
-  color: #898490;
-  font-size: 0.7rem;
+  color: var(--snip-faint);
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 td {
-  color: #4e4a56;
+  color: var(--snip-muted);
+}
+
+tbody tr {
+  transition: background 160ms ease;
+}
+
+tbody tr:hover {
+  background: rgb(255 255 255 / 3%);
 }
 
 .code-link {
-  color: #64578a;
+  color: var(--snip-coral);
   font-weight: 700;
   text-decoration: none;
 }
 
 .code-link:hover {
-  text-decoration: underline;
+  color: #ffc0ae;
 }
 
 .original-url {
-  max-width: 480px;
+  max-width: 520px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -229,18 +264,23 @@ td {
 
 @media (max-width: 600px) {
   .page-shell {
-    width: min(100% - 1rem, 920px);
-    padding-top: 1rem;
+    width: min(100% - 1rem, 960px);
+    padding-top: 2rem;
   }
 
   .hero {
-    padding: 3rem 0.25rem 2.5rem;
+    padding: 3.5rem 0.25rem 3rem;
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 15vw, 4.5rem);
   }
 
   .shorten-form {
     align-items: stretch;
     flex-direction: column;
     gap: 0.35rem;
+    border-radius: 1.35rem;
   }
 
   .shorten-form input {
@@ -255,6 +295,6 @@ td {
   .panel-header,
   th,
   td {
-    padding-inline: 1rem;
+    padding-inline: 1.1rem;
   }
 }
