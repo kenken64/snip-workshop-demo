@@ -78,6 +78,25 @@ node cli.js add https://example.com
 
 The CLI uses `SNIP_API` when set, otherwise it uses `http://localhost:3000`.
 
+## Generated Bundle
+
+`bundle/` is a generated release submodule, not a source directory. It contains
+one Bun process serving the API, redirects, and the built Angular app, plus the
+CLI beside it. Never hand-edit files inside `bundle/`.
+
+From the `main` checkout, rebuild it from the current source branch tips:
+
+```sh
+node scripts/build-bundle.mjs
+```
+
+The script is idempotent. Use `--push` to publish a changed `bundle` branch and
+the resulting `main` pointer commits:
+
+```sh
+node scripts/build-bundle.mjs --push
+```
+
 ## Update Workflow
 
 Changes happen inside a submodule first. Push the layer branch, then advance
